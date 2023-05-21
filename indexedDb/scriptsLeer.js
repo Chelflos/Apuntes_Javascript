@@ -1,5 +1,5 @@
 //Especificación oficial: https://developer.mozilla.org/es/docs/IndexedDB-840092-dup
-
+//modificacion para prueba en git
 const indexedDB = window.indexedDB
 const form = document.getElementById('form')
 const tasks = document.getElementById('tasks')
