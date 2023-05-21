@@ -1,0 +1,37 @@
+<!--Almacena objetos con claves pares clave valor-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let codigosPostales = new Map([[01,"Madrid"],[14,"zaragoza"],[43,"mallorca"]]);
+        let matriculas = new Map([["MD","Madrid"],["ZA","zaragoza"],["ML","mallorca"]]);
+
+        //METODOS
+        //GET DEVUELVE EL VALOR ASOCIADO A LA CLAVE INTRODUCIDA
+        console.log(codigosPostales.get(14));
+        //SET establece el valor asociado a una clave
+        console.log(codigosPostales.set(43, "Alcalntarilla"));
+        //HAS Comprueba si el mapa contiene un elemento iundicado por su clave o no
+        console.log(matriculas.has("ZA"));
+        //CLEAR Elimina todos los elementos de un objeto map
+        matriculas.clear();
+        //DELETE Elimina objetos del map por su indice
+        codigosPostales.delete(43);
+
+        /*ITERADORES
+        keys: Devuelve un iterador con las claves del mapa ordenadas
+        Values: devuelve un iterador con los valores del mapa ordenados
+        Entries: devuelve un iterador con los pares clave-valor del mapa ordenados.
+        */
+       let claves = codigosPostales.keys();
+       let valores = codigosPostales.values();
+       let claveValor = codigosPostales.entries();
+    </script>
+</body>
+</html>

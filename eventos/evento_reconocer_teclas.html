@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="eventos1.css">
+    <title>Evento reconocer teeclas</title>
+</head>
+<body>
+    <div id="imagen">
+    <h1>Pulsa <kbd>Alt+F12</kbd> para cambiar la imagen de fondo</h1>
+    </div>
+    <script>    
+        //keyup --> el evento se produce cuando el usuario suelta la tecla
+        //addEventListener("nombre evento",funcion callback)
+        document.body.addEventListener("keyup", function (ev) {
+            if(ev.altKey && ev.key=="F12"){
+                let capa = document.getElementById("imagen");
+                capa.style.backgroundImage="url('https://source.unsplash.com/random')";
+            }
+    })
+     //altkey --> Devuelve true en caso de que la tecla pulsada sea "alt" y false en caso contrario
+     //key --> devuelve el texto de la letra pulsada
+    </script>   
+</body>
+</html>

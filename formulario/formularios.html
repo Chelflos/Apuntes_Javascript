@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario1.css">
+    <link rel="script" href="formulario1.js">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Forms 1</h1>
+    <form id="formulario" action="/google.es" method="post" class="form">
+        <label for="nombre">Name: </label>
+        <input id="nombre" type="text" name="nombre" placeholder="Introduce tu nombre" required autofocus>
+        <br>
+        <label for="mail">Email: </label>
+        <input id="mail" type="email" name="mail" placeholder="Introduce tu email" required>
+        <br>
+        <div id="sexo">
+            <label for=" male">Male</label>
+            <input type="radio" name="sexo" value="male">
+            <label for="male">Female</label>
+            <input type="radio" name="sexo" value="female">
+          </div>
+        <br>
+        <label for="condiciones">I accept the terms and conditions</label>
+        <input id="condiciones" type="checkbox" name="condiciones" required>
+        <br>
+        <button id="enviar" disabled>Enviar</button>
+          
+    </form>
+
+    <script src="scripts.js">
+
+        /*El objeto document dispone de una propiedad llamada forms que retorna una colección
+        con todos los formularios del documento. Así document.forms[0] hará referencia al primer 
+        formulario del documento. Pero es posible, y más recomendable de hecho, acceder al formulario 
+        mediante otros métodos, por ejemplo, su identificador.
+
+        Acceder a los elementos del formulario se hacía, de forma clásica, mediante el atributo name de los 
+        controles del formulario. Este atributo es el que permite dar nombre a la información que se graba 
+        con el control y que se enviará cuando se pulse el botón de envío (submit) del formulario. Así, si
+        tenemos un control para grabar el primer apellido del usuario y ese control utiliza el atributo 
+        name para darle el nombre de apellido1, la forma de acceder a ese control es:
+        
+        documents.forms[0].apellido1
+        document.forms[0]["apellido 1"];
+        console.log(documentary.querySelector("[name='apellido1']");
+
+        PROPIEDAD O METODO
+
+        Elements            Devuelve una coleccion que contiene todos los controles del formulario
+        Length              Obtiene el numero de controles del formulario
+        Method              Retorna el contenido de la propiedad method del formulario,que marca la forma de envío de los datos(get o post). permite su modificacion.
+        Enctype             Obtiene o cambia lla forma de codificar los datos del formulario
+        AcceptCharset       Obtiene o cambia la el conjunto de caracteres del formulario.
+        Submit()            Envia los datos del formulario a su destino.
+        Reset()             Deja los valores de los controles del formulario a su estado por defecto
+
+       
+        EVENTOS DE FORMULARIO. EVENTO SUBMIT.
+
+        Este evento se produce justo antes del envío y se asocia al propio formulario. Tras su captura podemos validar los datos, pero teniendo la precaución de que si 
+        no cancelamos la acción por defecto de este evento, la acción se llevará a cabo.
+        Supongamos que tenemos un formulario en el que pedimos al usuario su nombre de usuario y que dicho nombre solo puede ser letras del alfabeto inglés y con un 
+        mínimo de 6 caracteres. No enviaremos datos si no se cumple esa premisa y cuando detectemos el fallo, avisaremos del error y no permitiremos el envío.
+
+        EVENTOS DE FORMULARIO. EVENTO RESET.
+
+        Este evento se produce cuando se ha ordenado, a través de un botón de tipo reset por ejemplo, que el formulario muestre los valores iniciales y borre lo que el 
+        usuario hubiera escrito. La captura del evento nos permitirá matizar esta operación o añadir acciones a la misma.
+
+        EVENTOS DE FORMULARIO. EVENTOS DE ENFOQUE.
+
+        Son eventos asociados a los controles de formulario en los que el usuario puede escribir o elegir opciones. Un control obtiene el foco cuando al usar el teclado 
+        manejamos dicho control. 
+        El enfoque se consigue gracias a la interacción con el dispositivo apuntador o al cambio de control de formulario gracias a la tecla del tabulador.
+        Un control de formulario lanza el evento focus cuando obtiene el foco y lanza blur cuando pierde el foco.
+
+        EVENTOS DE FORMULARIO. EVENTO DE CAMBIO DE VALOR.
+
+        PROPIEDADES Y MÉTODOS DE LOS CONTROLES
+
+        Para modificar las propiedades de los controles de formulario podemos trabajar sobre sus atributos como hacemos con cualquier otro elemento. Por ejemplo, para obtener 
+        el valor de un control de formulario podemos hacer lo siguiente:
+
+        console.log(control.getAttribute("value"));(suponiendo que control es el name del formulario)
+
+        el valor es algo que se cambia de forma dinámica en los formularios. Si el usuario ha modificado, por ejemplo, el valor de un cuadro de texto porque ha escrito algo en 
+        él, getAttribute(“value”) no refleja estos cambios. Por ello es mejor usar propiedades que sí reflejan los cambios que hace el usuario. Algunas de las más importantes son:
+
+        Name, type, value, chcked, defaultChecked, disabled, readonly, required, maxLength, min, max, step, selectionStart, selectionEnd.
+
+        Así como los métodos fundamentales serían:
+        Focus(), blurt(), select(), setSelectionRange().
+
+        ALGUNAS PROPIEDADES Y MÉTODOS DE LOS CONTROLES
+
+        defaultValue            Ajusta o devuelve el valor por defecto de un campo de texto.
+        form                    Devuelve la referencia al formulario que contiene ese campo de texto.
+        maxLength               Devuelve o ajusta la longitud maxima de caracteres permitidos en el campo de tipo de texto.
+        Name                    Ajusta o devuelve el valor del atributo name de un campo de texto.
+        readOnly                Ajusta o devuelve si un cmapo es de solo lectura, o no.
+        size                    Ajusta o devuelve el ancho de un campo de texto(en caracteres).
+        type                    Devuelve el tipo de un campo de texto.
+        value                   Ajusta o devuelve el contenido del atributo value de un campo de texto.
+
+        select()                Selecciona el contenido de un cambio de texto.
+
+                            Input de tipo checkbox
+        checked             Ajusta o devuelve el estado checked de un cjeckbox.
+        defaultChecked      Devuelve el valor por defecto del atributo checked.
+        form                Devuelve la referencia al formulario que contriene ese campo checkbox.
+        name                Ajusta o devuelve el valor del atributo name de un checkbox.
+        type                Indica que el tipo de formulario es checkbox.
+        value               Ajusta o devuelve el valor del atributo Value de un checkbox.
+
+
+        */
+        
+    </script>
+
+</body>
+
+</html>

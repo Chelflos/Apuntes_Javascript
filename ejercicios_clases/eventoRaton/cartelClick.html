@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartel de Ratón</title>
+    <style>
+        .cartel {
+            position: absolute;
+            display: none;
+            width: 100px;
+            height: 30px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 0;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartel = document.createElement("div");
+            cartel.className = "cartel";
+            cartel.textContent = "Ratón";
+            document.body.appendChild(cartel);
+
+            const paragraphs = document.querySelectorAll("p");
+            paragraphs.forEach(function (paragraph) {
+                paragraph.addEventListener("dblclick", function (event) {
+                    const x = event.clientX;
+                    const y = event.clientY;
+
+                    cartel.style.left = x + "px";
+                    cartel.style.top = y + "px";
+                    cartel.style.display = "block";
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Cartel de Ratón</h1>
+    <p>Texto del párrafo 1</p>
+    <p>Texto del párrafo 2</p>
+    <p>Texto del párrafo 3</p>
+    <p>Texto del párrafo 4</p>
+    <p>Texto del párrafo 5</p>
+</body>
+
+</html>

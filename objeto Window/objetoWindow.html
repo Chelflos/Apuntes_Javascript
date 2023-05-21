@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objeto Window</title>
+</head>
+<body>
+    <p id="ventana"></p>
+    <script>
+        /*Representa una ventana abierta en el navegador.
+        - Si una ventana tiene etiquetas de tipo "<iframe>"el navegador
+        crea un objeto window para el html inicial y uno para cada elemento <iframe>
+        - Todos los objetos, funciones, variables... son miembros del objeto
+        window: las funciones son sus metodos; las variables globales y el DOM son propiedades.
+        - No todos los metodos sirven para todos los navegadores: hay que comprobar la compatibilidad.
+        */
+
+        //PROPIEDADES BASICAS DE WINDOW
+        window.name="Mi ventana";
+        var texto="";
+        //nombre de la ventana
+        texto+="<br/>Nombre: "+window.name;
+        //tamano de la ventana con toolbar y scrollbar
+        texto+="<br/>Alto externo: "+window.innerHeight;
+        texto+="<br/>Ancho externo: "+window.innerWidth;
+        //tamano de la ventana sin toolbar y scrollbar
+        texto+="<br/>Alto externo: "+window.innerHeight;
+        texto+="<br/>Ancho externo: "+window.innerWidth;
+        //scroll horizontal y vertical
+        //tamano de la ventana con toolbar y scrollbar
+        texto+="<br/>Scroll horizontal: "+window.pageXOffset;
+        texto+="<br/>Scroll vertical: "+window.pageYOffset;
+        //Distancia de la esquina superior izquierda
+        //tamano de la ventana con toolbar y scrollbar
+        texto+="<br/>Distancia desde la izquierda: "+window.screenX;
+        texto+="<br/>Distancia desde arriba: "+window.screenY;
+
+        document.getElementById("ventana").innerHTML=texto;
+        /*OTROS OBJeTOS DEL NAVEGADOR
+        window.document
+        window.navigator
+        window.screen
+        window.history
+        window.location
+        */
+       /*EVENTOS
+       SCROLL
+       RESIZE*/
+    </script>
+</body>
+</html>

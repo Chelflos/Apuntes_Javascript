@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Canvas es un elemento de HTML5 que permite crear gráficos y animaciones utilizando comandos de JavaScript. 
+        El elemento canvas de HTML es un marque que se posiciona en el sitio que deseamos y que podemos modificar de tamaño.
+    Desde JavaScript podemos acceder a este componente, y a través de los métodos que nos proporciona la API de Canvas, realizar
+     creaciones gráficas en el espacio que proporciona el elemento canvas.
+
+    Este elemento tuvo un éxito muy grande desde su aparición en el estándar. Actualmente se sigue usando mucho, pero tiene bastante
+    competencia con el éxito que también están teniendo los gráficos SVG.-->
+    <canvas id="lienzo" width="500" height="300"></canvas>
+    <canvas id="lienzo2" width="500" height="300"></canvas>
+    
+    <script>
+    //En primer lugar debemos obtener una referencia al elemento canvas desde JavaScript
+        
+    const lienzo = document.getElementById("lienzo");
+
+    //Después debemos obtener el contexto del elemento
+
+    const contexto=lienzo.getContext("2d");
+    const ctx=lienzo.getContext("2d");
+
+    /*El contexto es el objeto que permite dibujar el lienzo. Proporciona todos los métodos y propiedades de dibujo. El método getContext, 
+    presente en los elementos de tipo canvas, es el encargado de obtener el contexto. A este método se le pasa un string que puede contener 
+    valores 2d o 3d Normalmente se usa el valor 2d porque es el que usa para gráficos en dos dimensiones, que son los habituales. El valor 
+    3d permite el dibujo de gráficos 3d con ayuda de la librería WebGL.
+    se pueden utilizar los métodos que permiten elegir las propiedades de trazo y relleno de los objetos que dibujemos y los métodos que permiten 
+    dibujar dichos objetos.
+
+    CONCEPTOS BÁSICOS SOBRE CANVAS
+
+    En muchas ocasiones tenemos que indicar coordenadas y , por ello, hay que entender como funciona el método de coordenadas de canvas.
+
+    El origen de coordenadas está en la esquina superior izquierda. Se llama eje x al horizontal e y al vertical. Cuando se dan posiciones de puntos, 
+    se indica siempre primero la coordenada x y luego la y.
+
+    El tamaño en píxeles de las coordenadas de canvas lo ajustan las propiedades width y height de la etiqueta canvas de HTML.
+
+    DIBUJO DE FORMAS. PROPIEDADES DE LAS FORMAS
+    
+    Para indicar el color de relleno actual se usa la propiedad fillStyle. A esta propiedad se le puede indicar un color al estilo CSS, por ejemplo “blue” o “#0000FF”.
+
+    La propiedad strokeStyle es similar y sirve para indicar el color de borde.
+
+    Hay otra propiedad llamada lineWidth que permite indicar la anchura del borde.
+
+
+    Una vez indicadas estas tres propiedades, las figuras dibujadas utilizarán esos colores y grosores de línea. Si no los especificamos, se utilizarán los valores por 
+    defecto configuradas en el navegador del usuario.
+
+    RECTANGULOS
+
+    Canvas solo dispone de una forma básica, el rectángulo. Se dispone de dos métodos para dibujar rectángulos:
+
+    fillRect. Dibuja un rectángulo sólido. Para hacerlo se indica la coordenada superior izquierda del rectángulo y, la anchura y la altura del mismo.
+
+    strokeRect. Dibuja un rectángulo transparente y pinta el borde.
+
+    */
+   contexto.fillStyle="black";
+   contexto.lineWidth=2;
+   
+   contexto.strokeStyle="gray";
+   contexto.fillRect(10,10,150,100);
+   contexto.strokeRect(30,30,150,100);
+
+   /*Un trazo es una serie de dibujos de líneas que forman una figura común. Los trazos deben comenzar invocando el método beginPath. Este método sirve 
+   para marcar dónde comienza el trazo. Desde ese momento todos los comandos se entienden que van dirigidos a formar el trazo.
+
+
+    El trazo se finaliza invocando, sin argumentos, al método closePath, el cual cierra el trazado. Tran esa instrucción las siguientes acciones se entiende 
+    que ya no van dirigidas a ese trazo. El trazo se dibuja realmente invocando al método stroke (dibuja el contorno) o a fill (pinta el relleno). Tanto stroke 
+    como fill usan la configuración de relleno y trazo actual establecida por los métodos stroke Style, fillStyle y lineWidth comentados anteriormente.
+
+
+    Tras la instrucción beginPath, los métodos moveTo y LineTo permiten dibujar trazos poligonales. El primero (moveTo) permite colocar el cursor en una coordenada 
+    concreta. El segundo (lineTo) marcará una línea desde la última posición del cursor a la posición indicada por los parámetros de lineTo. Los parámetros de ambos 
+    métodos son una coordenada x y otra y.
+
+
+    Además, hay un método que dibuja trazos rectangulares. Se llama rect. Los parámetros son los habituales en el relleno de rectángulos: coordenadas de la esquina superior izquierda (x e y), anchura y altura
+*/
+        ctx.beginPath();
+        ctx.lineWidth=2;
+        ctx.strokeStyle="blue";
+        ctx.moveTo(50,10);
+        ctx.lineTo(100,60);
+        ctx.lineTo(50,110);
+        ctx.lineTo(0,60);
+        ctx.lineTo(50,10);
+        ctx.stroke();
+        ctx.close.Path();
+
+        /*El método arc también se usa para crear trazos. De hecho se suele combinar con los anteriores. Tiene como parámetros las coordenadas (x e y) en las que se 
+        debe situar el centro del arco, el tamaño del radio, el ángulo inicial y el ángulo final. Los ángulos se miden en radianes, una medida matemática que se usa 
+        mucho en ciencias y programación. Cabe decir que, en esa unidad, dos veces PI equivale a 360 grados, 90 grados sería PI/2. Hay un último parámetro que indica, 
+        con un valor booleano, la dirección del arco: el valor true indica que se ha de dibujar en la misma dirección que las agujas del reloj.
+        
+        ARCOS
+
+        El método arc también se usa para crear trazos. De hecho se suele combinar con los anteriores. Tiene como parámetros las coordenadas (x e y) en las que se debe
+         situar el centro del arco, el tamaño del radio, el ángulo inicial y el ángulo final. Los ángulos se miden en radianes, una medida matemática que se usa mucho 
+         en ciencias y programación. Cabe decir que, en esa unidad, dos veces PI equivale a 360 grados, 90 grados sería PI/2. Hay un último parámetro que indica, con un 
+         valor booleano, la dirección del arco: el valor true indica que se ha de dibujar en la misma dirección que las agujas del reloj.
+        */
+    
+        const lienzo2=document.getElementById("lienzo2");
+        const ctx2=lienzo2.getContext("2d");
+        ctx2.beginPath();
+        ctx2.lineWidth=2;
+        ctx2.strokeStyle="blue";
+        ctx2.beginPath();
+        ctx2.moveTo(50,10);
+        ctx2.lineTo(100,10);
+        ctx2.lineTo(100,10);
+        ctx2.lineTo(50,110);
+        ctx2.stroke();
+        ctx2.closePath();
+        ctx2.beginPath();
+        ctx2.arc(100,110,100, Math.PI*3/2, Math.PI/2,true);
+        ctx2.stroke();
+        ctx2.closePath();
+    </script>
+</body>
+</html>

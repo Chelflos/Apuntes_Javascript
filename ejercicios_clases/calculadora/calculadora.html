@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JS</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+
+<body>
+    <div id="contenedor">
+    <div id="principal">
+        <table>
+            <tr>
+                <td class="calculadora" colspan="4">
+                    <input type="text" class="resultado" id="resultado" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="boton-Numero" data-number="7">7</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="8">8</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="9">9</button>
+                </td>
+                <td>
+                    <button class="boton-operador" data-operator="+">+</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="boton-Numero" data-number="4">4</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="5">5</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="6">6</button>
+                </td>
+                <td>
+                    <button class="boton-operador" data-operator="-">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="boton-Numero" data-number="1">1</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="2">2</button>
+                </td>
+                <td>
+                    <button class="boton-Numero" data-number="3">3</button>
+                </td>
+                <td>
+                    <button class="boton-operador" data-operator="*">x</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="boton-Numero" data-number="0">0</button>
+                </td>
+                <td>
+                    <button class="boton-operador" data-operator="/">/</button>
+                </td>
+                <td>
+                    <button class="calcular">=</button>
+                </td>
+                <td>
+                    <button class="clear">CE</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <p>Calculadora JS</p> 
+                </td>
+            </tr>
+    </div>
+    </table>
+    </div>
+</div>
+    <script>
+        /*Crea una calculadora que debe funcionar perfectamente con los botones +,-.x,/,CE.
+        La letra de los cuadrados numeroicos es de google fonts
+        y se llama audiowide.El cuarto debe salir
+        totalmente centrado en la pantalla independientementede la resolucion.
+        Los colores usados son: negro, #3F3e3b(fondo calculadora), #C0416E(fondo al arrimar raton).#EDEEF9(color letra botones y color fondo cuadros numericos),#7475e(fondo control de resolucion)
+        Al pulsar los botones orrespondientes se calcula el resultado en funcuion de los resultados escritos*/
+
+        //Obtener referencia al elemento resultado
+        let resultado = document.getElementById("resultado");
+        //variable para almacenar el resultado final
+        let resultadoActual = '';
+        //Obtener todos los botones numericos y operadores
+        const botonNumero = document.querySelectorAll('.boton-Numero');
+        const botonOperador = document.querySelectorAll('.boton-operador');
+        //obtener boton clear e igual
+        const botonClear = document.querySelector('.clear');
+        const botonCalcular = document.querySelector('.calcular');
+        //-----------------------------------------------EVENTOS-------------------------------------------------------------
+        //agregar evento al hacer click a cada boton numerico
+        botonNumero.forEach(button => {
+            button.addEventListener('click', () => {
+                agregarDato(button.getAttribute('data-number'));
+            });
+        });
+        //Agregar evento de click a cada boton de operador
+        botonOperador.forEach(button => {
+            button.addEventListener('click', () => {
+                operacion(button.getAttribute('data-operator'));
+            });
+        });
+        //Agregar evento a CE
+        botonClear.addEventListener('click', borrarResultado);
+        //Agregar evento de click a boton de calculo
+        botonCalcular.addEventListener('click', calcularResultado);
+
+        //-------------------------------------------------FUNCIONES------------------------------------------------------
+
+        //Agregar numero al resultado actual
+        function agregarDato(numero) {
+            resultadoActual += numero;
+            resultado.value = resultadoActual;
+        }
+        //Reiniciar el resultado actual
+        function borrarResultado() {
+            resultadoActual = '';
+            resultado.value = '';
+        }
+        //Funcion para agregar operadores al resultado actual
+        function operacion(operador) {
+            resultadoActual += operador;
+            resultado.value = resultadoActual;
+        }
+        //Funcion para calcular el resultado
+        function calcularResultado() {
+            try {
+                //funcion eval()
+                resultadoActual = eval(resultadoActual);
+                resultado.value = resultadoActual;
+            } catch (error) {
+
+            }
+        }
+    </script>
+</body>
+
+</html>

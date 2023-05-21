@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        SINTAXIS PARA EL ACCESO A LAS PROPIEDADES DE UN OBJETO
+        
+        -objeto.propiedad;
+        -objeto["propiedad"];
+        -objeto[expresion]
+        */
+       let persona1 = {nombre:"Carlos", apellido:"Diez", ano:"1984"}
+       alert(persona1.nombre);
+       alert(persona1.apellido);
+       alert(persona1.ano);
+       alert(persona1[expresion]);
+       //recorrer las propiedades de un objeto
+
+       for(i in persona1){
+        alert(persona[i]);
+       }
+
+       //anadir propiedades a un objeto
+       /*<nombre_objeto>.<nuevaPropiedad>=<valorPropiedad>*/
+        persona1.nacionalidad = "Colombia";
+        //Borrar propiedades
+        delete persona1.ano;
+
+        for(i in persona1){
+        alert(persona[i]);
+       }
+    </script>
+</body>
+</html>

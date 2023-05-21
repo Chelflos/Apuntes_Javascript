@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*
+La solución al problema del callback hell es una estructura que permite controlar de 
+forma más organizada las tareas asíncronas sin tener que usar tantas funciones callback anidadas.
+Esa nueva estructura es lo que se conoce como promesa.
+
+Una promesa permite invocar a una función o tarea, cuya labor requiere una ejecución asíncrona. 
+Podremos determinar lo que ocurre en el caso de que esa tarea concluya correctamente y lo que 
+haremos en el caso de concluir mal. En las dos situaciones, podremos recoger información al respecto.
+
+Las promesas pueden tener uno de estos estados:
+
+=Cumplida (resolved o fulfilled).
+-Rechazada(rejected).
+-Pendiente de finalizar (pending).
+-Finalizada (settled).
+
+La promesa son objetos de tipo Promise. Estos objetos son los que hacen la labor de relacionar la labor
+asíncrona con las acciones a tomar en caso de éxito o fracaso. Para ello proporcionan varios métodos y,
+sobre todo, una función de construcción de objetos Promise que es donde se constituye realmente la promesa.
+
+La creación de promesas sigue esta estructura formal:
+----------------------------------------------------------------------
+----let promesa = new Promise(function(resolver,rechazar){
+    if(condicion que valida que la tarea fue exitosa){
+        resolver(informacion sobre exito)
+    }                                                                       <-----Codigo de tarea asincrona
+    else{
+        rechazr(informacion sobre el fracaso);
+    }
+    });------
+------------------------------------------------------------------------
+        METODO THEN
+
+Interviene al recoger los resultados del exito o del fracaso. Este método acepta una función callback, 
+que será invocada cuando la tarea de promesa finalice con éxito. Hay un segundo parámetro opcional, que
+también es una función, cuyo código se invoca si el resultado es erróneo. La sintaxis es la siguiente:       
+
+promesa.then(function(resultado){...}, function(error){...});
+
+La primera función recibe un parámetro. Ese parámetro es el que hayamos pasado a la función resolver, 
+durante la creación de la promesa. La segunda función recibe el parámetroindicado en la función rechazar. 
+Es poco habitual usar la segunda función, en su lugar se usa el formato de captura de errores :
+
+        MÉTODO CATCH
+
+catch que permite gestionar el rechazo en la promesa. Además, se permite encadenar ambos métodos, porque 
+el resultado de los métodos then y catch es el propio objeto de la promesa. La sintaxis completa es:
+
+promesa.then(function(resultado){
+    ...
+}).catch(function(resultado){
+    ...
+});
+En este código podemos encadenar ambas acciones. Incluso hay un tercer método llamado finally que recibe 
+una función callback sin parámetros, cuyo código se ejecuta tanto si la promesa es exitosa como si no.
+
+EJEMPLO PROMESA
+Promesa que consiste en que, si dos variables valen lo mismo, por pantalla salga un mensaje diciéndolo, 
+y si no es así, lanzaremos un error:
+*/ 
+let promesa = new Promise((resolver,rechazar)=>{
+let x = 2;
+let y = 1;
+if(x==y)resolver("Son iguales");
+else rechazar(Error("Algo raro ha pasado"));
+});
+promesa.then((respuesta)=>{
+    console.log(respuesta);
+}).catch((error=>{
+    console.log(error.message);
+}));
+
+/*Se puede invocar varias veces a las funciones de resolución y de rechazo. Pero cada método then o catch
+ solo puede responder a una. Lo que sí se permite es encadenar los métodos then y catch las veces que haga
+ falta*/
+ var promesa2=new Promise(function(resolver,rechazar){
+    let n = 0;
+    let intervalo=setInterval(function(){
+        n++;
+        if(n==10){
+            resolver("Han pasado 10 segundos");
+            clearInterval(intervalo);
+        }
+    },1000)
+ });
+ promesa2.then(function(mensaje){
+    console.log(mensaje);
+    return "Se ha cerrado el temporizador";
+ }).then((mensaje)=>console.log(mensaje));
+    </script>
+</body>
+</html>

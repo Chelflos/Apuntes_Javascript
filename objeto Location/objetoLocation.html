@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="location"></p>
+    <script>
+        //Guarda info de la URL actual.
+        var texto = "";
+        //PROPIEDADES LOCATION
+        //href(URL) de la pagina
+        texto += "<br/>Href: "+ location.href;
+        //nombre del host de la pagina
+        texto += "<br/>Hostname:"+ location.hostname;
+        //pathname de la pagina
+        texto += "<br/>Pathname: "+location.pathname;
+        //protocolo de la pagina
+        texto += "<br/>protocol: "+location.protocol;
+        //hash o ancla de la pagina(ej. www.web.com/ index.html#indice)
+        texto += "<br/>Hash: "+location.hasg;
+        //nombre del hostname y el puerto
+        texto += "<br/>Host: "+location.host;
+        //nombre del protocolo, hostname y el puerto
+        texto += "<br/>Origin: "+location.origin;
+        //querystring de la pagina (ej. www.web.com/ index.html?user=ada)
+        texto += "<br/>Search: "+location.search;
+
+        document.getElementById("location").innerHTML = texto;
+        //metodos objeto location
+        //assing(<url>): asigna un nuevo documento a la pagina
+            function nuevoDocument(){
+                location.assign("https://www.google.com");
+            }
+        //reload, recarga la pagina
+        function recarga(){
+            location.reload();
+        //replace, sustituye la pagina por otra, DESAPARECE SU HISTORIAL
+        function sustituye(){
+            location.replace("https://www.google.com");
+        }
+        }
+    </script>
+    <button onclick="nuevoDocument()">Carga un nuevo documento</button>
+    <button onclick="recarga()">Recarga la pagina</button>
+    <button onclick="sustituye()">sustituye la pagina</button>
+</body>
+</html>

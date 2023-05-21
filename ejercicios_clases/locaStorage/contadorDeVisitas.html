@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="contador.js"></script>
+  <title>Contador de visitas</title>
+</head>
+
+<body>
+  <h1>Contador de visitas</h1>
+  <p>Has visitado esta página <span id="contador"></span> veces.</p>
+
+  <script>
+    // Obtener el contador de visitas almacenado en el localStorage
+    let contador = localStorage.getItem('contador');
+
+    // Verificar si el contador existe en el localStorage
+    if (contador) {
+      contador = parseInt(contador); // Convertir a número entero
+      contador++; // Incrementar el contador
+    } else {
+      contador = 1; // Si no existe, establecer el contador en 1
+    }
+
+    // Actualizar el contador en el localStorage
+    localStorage.setItem('contador', contador);
+
+    // Mostrar el contador en la página
+    document.getElementById('contador').textContent = contador;
+  </script>
+</body>
+
+</html>

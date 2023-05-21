@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario1.css">
+    <script src="formularioP.js"></script>
+    <title>Formulario prueba js</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>Formulario de registro</h1>
+        <table id="tabla">
+            <form id="formulario" action="formaulario.php" name="formulario" method="post"></form>
+
+            <tr id="filaNombre">
+                <td colspan="2">
+                    <label for="nombre">Nombre: </label>
+                </td>
+                <td colspan="2">
+                    <input type="text" placeholder="Introduce tu nombre." name="nombre" id="nombre" minlength="3" required>
+                </td>
+            </tr>
+
+            <tr id="filaPassword">
+                <td colspan="2">
+                    <label for="apellido">Contraseña: </label>
+                </td>
+                <td colspan="2">
+                    <input type="password" placeholder="Introduce tu apellido." name="password" id="password" minlength="8" required>
+                </td>
+            </tr>
+
+            <tr id="filaEmail">
+                <td colspan="2">
+                    <label for="email">Email: </label>
+                </td>
+                <td colspan="2">
+                    <input type="text" placeholder="Introduce tu email." name="email" id="email" minlength="4 re" required>
+                </td>
+            </tr>
+
+            <tr id="filaSexo">
+
+                <td class="celdasSexo">
+                    <label for="sexo">Hombre </label>
+                </td>
+                <td class="celdasSexo">
+                    <input type="radio" name="sexo" value="Hombre" id="sexo1" >
+                </td>
+
+                <td class="celdasSexo">
+                    <p>Mujer </label>
+                </td>
+                <td class="celdasSexo">
+                    <input type="radio" name="sexo" value="Mujer" id="sexo2" >
+                </td>
+
+            </tr>
+
+            <tr id="filalegal">
+                <td></td>
+                <td>
+                    <input type="checkbox" id="condiciones" name="condiciones" > </input>
+                    
+                </td>
+                <td colspan="2"><label for="condiciones" required>Acepto los terminos y condiciones. </label></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="boton">
+                    <button id="enviar" type="submit" disabled>Enviar</button>
+                   
+                </td>
+            </tr>
+            </form>
+        </table>
+    </div>
+</body>
+
+</html>

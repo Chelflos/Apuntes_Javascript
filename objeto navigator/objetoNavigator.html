@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="navegador"></p>
+    <script>
+        var texto ="";
+        /*e conoce como BOM (Browser Objects Model) al modelo que aglutina toda la estructura organizativa
+         de los objetos del navegador. A partir de ahora el navegador no es una simple pantalla, 
+         sino un conjunto de objetos que podemos consultar y manipular.*/
+        
+        //appcodename: codename del navegador
+        texto +="<br/>CodeName: " + navigator.appCodeName;
+        //appName: appName del navegador
+        texto+="<br/>AppName: " + navigator.appName;
+        //appVersion: appVersion del navegador
+        texto+="<br/>AppVersion: " + navigator.appVersion;
+        
+        //product: motor del navegador
+        texto+="<br/>product: " + navigator.product;
+        //plattform: plataforma del navegador
+        texto+="<br/>platform: " + navigator.platform;
+        //online: si el navegador esta online u offline
+        texto+="<br/>Online: " + navigator.onLine;
+        //language:lenguaje del navegador
+        texto+="<br/>Idioma: " + navigator.language;
+        //cookieEnabled: cookies activadas o no
+        texto+="<br/>Cookies: " + navigator.cookieEnabled;
+        //Useragent:motor del navegador
+        texto+="<br/>Cabecera user-agent: " + navigator.userAgent;
+        //geolocalization: devuelve un objeto geolocalization, que puede servir para localizar la posicion del usuario.
+        texto+="<br/>Geolocation: " + navigator.geolocation;
+        //javaEnabled(): devuelve true o false si java esta activado
+        texto+="<br/>Java enabled: " + navigator.javaEnabled();
+        //ir rellenando la etiqueta p con lo qu e le pase de navegador
+        document.getElementById("navegador").innerHTML=texto;
+    </script>
+</body>
+</html>

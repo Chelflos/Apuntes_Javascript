@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frecuencia qaparicion de numeros</title>
+</head>
+<body>
+    <div id="resultado">
+
+    </div>
+    <script>
+        var frecuencias = {};
+    
+        // Generar números aleatorios y contar su frecuencia
+        for (var i = 0; i < 10000; i++) {
+          var numero = Math.floor(Math.random() * 10) + 1;
+    
+          if (frecuencias[numero]) {
+            frecuencias[numero]++;
+          } else {
+            frecuencias[numero] = 1;
+          }
+        }
+    
+        // Mostrar los resultados en la página web
+        var resultadoDiv = document.getElementById("resultado");
+    
+        for (var numero in frecuencias) {
+          var parrafo = document.createElement("p");
+          var texto = document.createTextNode("Número " + numero + ": " + frecuencias[numero]);
+          parrafo.appendChild(texto);
+    
+          resultadoDiv.appendChild(parrafo);
+        }
+      </script>
+</body>
+</html>

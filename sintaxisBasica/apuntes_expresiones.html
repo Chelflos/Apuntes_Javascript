@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clase 09</title>
+    </head>
+    <body>
+        <script>
+            let expresion=/a/i;                              //i nodiferenciar  min y mayus
+            let expresion2=/^a/i;                            //^ si la primera letra es la a devuelve true(empieza por...)
+            let expresion3=/a$/;                             //a$ si la ultima letra es la a
+            let expresion4 = /a.e/;                          //a.e/ si hay una a y una e con un caracter entre medias.(entre los dos elementos debe haber un caracter,si se le anade un mas al punto puede haber muchos caracteres de por medio)
+            let expresion5 = /[ao]$/;                        //[] se permite cualquiera de estos simbolos. y mas $, Hay una a o bien una o y termina por una de estas
+            console.log(expresion.test('ordenador'));        //devuelve verdadero si se culple la condicion
+                                                             //x+ -->   la expresion a la izquierda se puede repetir una o mas veces
+                                                             //x* --> se puede repetir 0 o mas veces
+                                                             //x? -->de 0 a 1 veces
+                                                             //x{n} -->se tiene que repetir n veces
+                                                             //x{m,n}-->de m a n  veces   
+            let expresion6=/^[AEIOU].+a/;                     //contenga una vocal mayuscula despues uno  o varios caracteres y despues una a  
+           let expresion7=/^[AEIOU].*a/;
+
+           let expresion8= /([a-z](2)[0-9])(3)/;            //indica que queremos que la expresion contenga dos letras seguindas de un numero, tres veces seguidas
+           //OPCIONES
+           // | Nos permite indicar que se da por valida la expresion de la izquierda o la de la dcha
+           let expresion9=/^([A-Z][0-9]{6}) | ([0-9][A-Z]{6})$/;
+           /*SIGNOS ABREVIADOS
+           /d --> Digito, cualquier digito numerico
+           /D --> Cualquier caracter salvo los digitos numericos
+           /s --> Espacio en blancxo
+           /S--> cualquier caracter excepto el espacio en blanco
+           /wcualquier caracter alfnumerico
+           /W-->.....
+           /0 --> nulo(cer0)
+           
+
+           */
+          let hayCookies=false//leemos si en esta sesion ya se han aceoptado las cookies
+          let exp = /(cookie-) (si | no)/;
+          //exec -->
+          let res=exp.exec(document.cookie);
+          if(res==true){
+            if(res[2] == "si")haycookies=true;
+          }
+          if(!hayCookies){
+            haycookies=confirm("Esta p'agina usa una cookie para almacenar el numero"+
+            "de visitas que hace cada usuario. Si est'a conforme pulse sí, De otro modo,"+
+            "la pagina no realizara su labor y se eliminará la cookie.");
+
+          }
+          if(haycookies){
+            document.cookie="cookie = si";
+            exp=/(visitas=)(/d+/)/;
+            let visitas=(res?+ +res[2]:1);
+          }
+           </script>
+    </body>
+</html>>

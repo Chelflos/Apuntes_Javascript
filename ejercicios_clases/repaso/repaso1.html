@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="repaso1.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="contenedor">
+        <p id="contador"></p>
+        <img id="imagen" src="Alice.jpg" alt="Boceto de alice in wonderlands">
+        <br>
+        <button id="boton">Cambiar</button>
+    </div>
+    <script>
+        /*Crear una pagina web que contenga un boton y una imagen.Al hacer cklick en el botón, la imagen debe de cambiar a otra imagen de forma automatica cada 3 segundos
+        Ademas,se debe llevar una contador de visitas qie indique el número de veces que el
+        usuario ha pasado por la pagina.Cada vez que se carga la pagina, el contador debe incrementarse en uno.*/
+
+        //CONTADOR
+        // Obtener el contador de visitas almacenado en el localStorage
+        let contador = localStorage.getItem('contador');
+
+        // Verificar si el contador existe en el localStorage
+        if (contador) {
+            contador = parseInt(contador); // Convertir a número entero
+            contador++; //Incrementar el contador
+        } else {
+            contador = 1; // Si no existe, establecer el contador en 1
+        }
+
+        // Actualizar el contador en el localStorage
+        localStorage.setItem('contador', contador);
+
+        // Mostrar el contador en la página
+        document.getElementById('contador').textContent = contador;
+
+//----------------------------------------------------------------------------------------------------
+
+      
+        let boton = document.getElementById("boton");
+        let imagenes=['Alice.jpg','Conejolinea.jpg','spazzatura.jpg'];
+        let indiceImagen=0;
+
+
+
+        function cambiar(){
+        document.getElementById('imagen').src=imagenes[indiceImagen];
+        indiceImagen = (indiceImagen + 1) % imagenes.length;
+        }
+        
+            let intervalo=setInterval(cambiar, 3000);
+        
+            boton.addEventListener('click', cambiar);
+
+            //reiniciar intervalo al cargar la pagina 
+            window.addEventListener('load',()=>{
+                clearInterval(intervalo);
+                interval=setInterval(cambiar,3000);
+            })
+
+
+
+    </script>
+</body>
+
+</html>

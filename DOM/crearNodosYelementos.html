@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="principal">
+        <p class="parrafo1">Esto es una prueba</p>
+    </div>
+    <script>
+        //De la siguiente manera se ccrea un elemento y se le asignan algunos atributos
+        let capa=document.getElementById("principal");
+        let capa1=document.createElement("div");
+        capa1.innerHTML="<p>Esta es mi nueva capa<p>";
+            capa1.setAttribute("id", "capa1");
+        //Mediante appendchild puedes agregar un nodo hijo
+        capa.appendChild(capa1);
+        //Para que sea visible, es necesario asignar un nodo
+        //El método createTextNode crea un nodo de tipo texto. Para ello basta con indicar el texto que deseamos colocar en el nodo:
+        let nodoT1=document.createTextNode("Este texto no se muestra todavia");
+        capa.appendChild(nodoT1);
+        //Al igual que ocurría con createElement, los nodos recién creados no se muestran hasta que no los coloquemos dentro de document.
+        // insertBefore permite indicar la posición en la que queremos colocar el elemento. Tiene dos parámetros: el primero es el nodo que deseamos añadir y el segundo es el nodo hijo delante del cual quedará colocado el que deseamos añadir
+        let nodoT2=document.createTextNode("Este texto se inserta especificando posicion");
+        
+   </script>
+</body>
+</html>

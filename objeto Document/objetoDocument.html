@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Objeto Document</h1>
+    <p id="documento">Tremenda guayaba</p>
+    <p id="documento2">Tremenda guayaba</p>
+    <p class="caja"></p>
+    <p id="caja"></p>
+    <h2></h2>
+    <script>
+        //metodos para seleccionar elementos del html
+        const seccion = document.getElementById('documento');
+        
+        const cajas = document.getElementsByClassName('caja');
+     
+      
+        console.log(seccion);
+        console.log(seccion.nodeName);
+        console.log(cajas);
+        
+        console.log(cajas.nodeName);
+       //setAttribute modificar el valor de un atributo     elemento.set Attribute("class","verdura")
+
+        //removeAttribute seguido de un nombre de atributo, nos permite eliminar el atributo que tenga ese nombre del elemento.
+        
+        /* El método toggleAttribute permite añadir al elemento el atributo que se indique si no está añadido ya, o quitar el atributo
+         con ese nombre si ya está añadido. 
+         Si la primera vez que usamos el método toggleAtribute, 
+         añade el atributo, la siguiente lo eliminará, la siguiente lo volverá a añadir y así sucesivamente.*/
+
+        //el método hasAttribute devuelve verdadero si el elemento tiene el atributo cuyo nombre se indica y falso si no lo tiene.
+        
+        /*for(let atributo of listaAtributos){
+            console.log('atributo: ${atributo.name}'+'Valor: ${atributo.value}');
+        }*/
+
+        //TEXTCONTENT La propiedad textContent de un elemento permite obtener y modificar el texto que contiene ese elemento.
+        document.getElementById('documento').textContent;
+        //A traves de esta propiedad tambien podemos cambiar el contenido
+        document.getElementById('documento').textContent="Tremendisima Guayaba";
+
+        /*INNER HTML    similar a text content, pero esta si lee y manipula las etiquetas html*/
+        document.getElementById('documento2').innerHTML="Guayaba <strong>bien fresca</strong>";
+    </script>
+</body>
+</html>

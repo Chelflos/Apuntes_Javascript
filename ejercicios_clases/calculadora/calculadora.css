@@ -1,0 +1,84 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    padding-top: 100px;
+    background-color: darkslategray;
+}
+table{
+    width: 100%;
+}
+p{
+    margin-top: 20px;
+    color: white;
+    font-family: fantasy;   
+    text-align: center;
+
+}
+#contenedor{
+    width: 100%;
+    height: 30%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    background-color: dimgray;
+
+}
+#principal{
+   
+    padding: 10px;
+    padding-right: 18px;
+    width: 10%;
+    height: 100%;
+    background-color: darkgray;
+    border-radius: 10px;
+    margin: auto;
+}
+
+#botones{
+    width: 100%;
+}
+.resultado{
+    width: 95%;
+    height: 25px;
+    border-radius: 5px;
+}
+.boton-Numero{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    width: 100%;
+    height:4%;
+    border-radius: 5px;
+}
+.boton-operador{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height:4%;
+    border-radius: 5px;
+}
+.calcular{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height:4%;
+    border-radius: 5px;
+}
+.clear{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height:4%;
+    border-radius: 5px;
+}
+.calculadora{
+   padding-bottom: 10px;
+}

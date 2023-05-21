@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*El método SETTIMEOUT de window tiene dos parámetros: el primero es la función que se
+         ejecutará cuando se cumpla el tiempo, el segundo es un valor numérico que indica el tiempo 
+         a cumplir en milisegundos.*/
+         setTimeout(()=>alert("Hola"),5000);
+         /*El primer parámetro del código anterior es la función flecha ()=>(“Hola”) esta función 
+         simplemente lanza el mensaje “Hola” en un cuadro de diálogo. El segundo parámetro 
+         indica que se esperará 5 segundos antes de ejecutar el código de la función.*/
+
+         /*El método setTimeout devuelve un número que identifica al temporizador en sí. Es decir, 
+         a cada temporizador lanzado con setTimeout se le asigna un número o identificador. Ese número 
+         se pude usar para cancelar el temporizador mediante clearTimeout.*/
+         var temp1=setTimeout(()=>alert("Hola"),5000);
+         clearInterval(temp1);
+
+         /*SETINTERVAL 
+         Tiene los mismos parámetros y devuelve también un identificador de temporizador que puede ser 
+         almacenado en una variable para poder cancelar el temporizador con un método llamado clearInterval.
+          La diferencia es que, en este caso, el código asignado al temporizador se invoca cada vez que pase el tiempo indicado.
+         Es decir, setTimeout invoca al código una sola vez y setInterval lo invoca constantemente*/
+         var cont =0;
+         var temp2=setInterval(function(){
+            alert("Hola otra vez");
+            cont++;
+            if(cont>=10){
+                clearInterval(temp2);
+                }
+            },4000);
+         /*ahora el cuadro de mensaje diciendo Hola aparecerá cada 5 segundos y no solo una vez como antes.
+          Jamás dejará de aparecer a no ser que lo cancelemos:*/
+                         
+        
+    </script>
+</body>
+</html>

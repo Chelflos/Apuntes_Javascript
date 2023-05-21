@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //crear una cookie(se guardan en forma de pares "nombre-valor":usuario = nombre usuario) decha expiracion,uso horario,edad maxima en segundos;ruta;dominio
+       // document.cookie="usuario = Ada Lovelace; expires=Thu,16 Nov 2017 12:00:00 UTC; path=/;"
+        //otra manera de crear una cookie es:
+        document.cookie="usuario= Ada Lovelace; "
+        //leer una cookie
+        var miCookie = document.cookie;
+        alert(miCookie);
+        //Modificar una cookie, para ello solo hay que sobreescribir
+        document.cookie="Sexo=hombre;";
+        alert(document.cookie);
+        //Borrar una cookie, se le asigna una fecha de expiracion
+        document.cookie="usuario=; expires=thu, 01 Jan 1970 00:00:01 GMT";
+    </script>
+</body>
+</html>

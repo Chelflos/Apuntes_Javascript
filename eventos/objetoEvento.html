@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes objeto evento</title>
+</head>
+<body>
+    <p>Uno</p>
+    <p>Dos</p>
+    <p>Tres</p>
+    <a href="https://www.w3schools.com/js/js_events.asp">DOCUMENTACION EVENTOS JS</a>
+    <script>
+        /*Cuando se produce un evento, el navegador crea automáticamente un objeto cuyas propiedades pueden 
+        ser muy útiles a los desarroladores. La información fundamental que graban son las coordenadas del 
+        cursor del ratón, si hay teclas pulsadas, el elemento que ha producido el evento, etc.
+        Una de las propiedades que posee este objeto se llama target y es una referencia al elemento que causó el evento.*/
+        function escribeContenido(event){
+            console.log(event.target.textContent);
+        }
+        let parrafos=document.querySelectorAll("p");
+        for(let parrafo of parrafos){
+            parrafo.addEventListener("click",escribeContenido);
+        }
+        //OBTENER COORDENADAS DEL EVENTO
+        //CLIENTX CLIENT Y
+        /*Los objetos de evento poseen dos propiedades para obtener las coordenadas del ratón en el momento del evento: 
+        clientX y clientY. La primera obtiene la posición horizontal en píxeles y la segunda la vertical. Ambas lo hacen
+         utilizando como referencia la esquina superior i<quierda de la ventana del navegador, que será el punto (0, 0) 
+         de coordenadas.
+
+         SCREEN X SCREEN Y
+         Hay dos propiedades similares: screenX y screenY. La diferencia es que el origen de coordenadas no es la esquina 
+         del navegador, sino de la pantalla. Coinciden muchas veces, pero si la ventana no está maximizada, no coincidirán.
+         
+         PAGE X PAGE Y
+         Otras coordenadas que se almacenan en el objeto de evento son pageX y pageY. Funcionan como clientX y clientY,  
+         pero no solo toman las de la ventana, tienen en cuenta el desplacamiento realizado en el elemento. Es decir, si 
+         hemos avanzado dos pantallas de 500 píxeles de alto usando las barras de desplazamiento y el cursor está a mitad 
+         de pantalla, clienty  nos dirá 250, mientras que pageY nos dirá 1250. Depende d elo que deseemos nos vendrán mejor 
+         unas u otras coordenadas
+         */
+        /*EVENTOS DE TECLADO
+
+        OBTENER LETRA PULSADA
+
+        En eventos del teclado, el objeto de evento posee información sobre la tecla pulsada. Son importantes estos datos 
+        en aplicaciones como la programación de juegos o en el control de la entrada por teclado.
+        La propiedad más importante es key que obtiene el texto que indica la tecla pulsada. Es el más cómodo de programar 
+        porque es fácil de entender. Así sus valores fundamentales devueltos son:
+
+        Si es una tecla de carácter, nos retorna el carácter.
+        Con las teclas numéricas actúa igual, nos retorna el número. Pero con shift pulsada a la vez, nos devuelve el segundo símbolo 
+        de la letra (&, $, %, etc). Con Alt Gr nos retorna el tercero (|, @, #, etc).
+        Actúa igual con cualquier tecla que escriba caracteres, simplemente indica qué carácter normalmente sale escrito.
+        En el caso de pulsa, sin más, teclas de control, nos devolverá su nombre.
+        A veces es necesario saber si se pulsó a la vez que la tecla las teclas de control especial: Ctrl, Alt o Shift. 
+        Tenemos tres propiedades relacionadas con estas teclas que devolverán true si la tecla en cuestión se pulsó. Son AltKey,
+         CtrlKey, ShiftKey y MetaKey.
+        
+        Otra propiedad interesante es location que permite saber la localización de la tecla en el teclado. El caso habitual 
+        es tener que distinguir una tecla Shift de la otra. La propiedad location lo consigue, esta propiedad devuelve un número 
+        entero que indica la posición del teclado en la que se encuentra la tecla.
+        valor:0 constante relacionada DOM_KEY_LOCATION_STANDARD SIGNIFICADO: Teclado normal
+        valor:1 constante relacionada: DOM_KEY_LOCATION_LEFT SIGNIFICADO:Zona izquierda(para distingui teclas ctrl por ejemplo)
+        valor 2 constante relacionada: DOM_KEY_LOCATION_NUMPAD SIGNIFICADO: Zona derecha (para distinguir las dos teclas ctrl por ejemplo)
+        valor 3 constante relacionada: DOM_KEY_LOCATION_NUMPAD SIGNIFICADO: Teclado numerico
+        
+        OBTENER LOS BOTONES DEL RATON
+        En los eventos del ratón hay propiedades comunes con las teclas. Por ejemplo, también tenemos las propiedades AltKey, CtrlKey, 
+        ShiftKey y MetaKey, para saber si la pulsación de alguna de estas teclas acompaña al evento del ratón.
+
+        Hay otras propiedades de coordenadas muy interesantes. Así movementX y movementY nos retornan la diferencia en píxeles 
+        de las coordenadas X e Y respecto al último movimiento del ratón.
+
+        Además, las propiedades button devuelve el botón del ratón pulsado en el momento del evento. Los valores posibles para la propiedad button son:
+        0 Boton principal
+        1 Boton central
+        2 boton secundario
+        3 Cuarto boton, en muchos casos, retroceder pagina
+        4 Quinto boton, en muchos casos avanzar pagina
+        
+        TIPO DE EVENTO                  NOMBRE              DESCRIPCIÓN
+        Relacionado con el raton        onclick             click sobre un elemento.
+        Relacionado con el raton        ondblclick          doble click sobre un elemento.
+        Relacionado con el raton        onmousedown         Se pulsa un boton del raton sobre un elemento.
+        Relacionado con el raton        onmousecenter       El puntero del ratón entra en el área de un elemento.
+        Relacionado con el raton        onmouseleave        El puntero del ratón sale del área de un elemento.
+
+        Relacionado con el raton        onmousemove         El puntero del ratón se está moviendo sobre el área de un elemento.
+        Relacionado con el raton        onmouseover         El puntero del ratón se sitúa encima del área de un elemento.
+        Relacionado con el raton        onmouseout          El puntero del ratón sale fuera del área de un elemento o fuera de uno de sus hijos.
+        Relacionado con el raton        onmouseup           Un botón del ratón se libera estando sobre un elemento.
+        Relacionado con el raton        contextmenu         Se pulsa el botón derecho del ratón(antes de que aparezca el menu contextual).
+        
+        Relacionado con el teclado      onkeydown           El usuario tiene pulsada una tecla(para elementos de formulario y body).
+        Relacionado con el teclado      onkeypress          El usuario pulsa una tecla(momento justo en que la pulsa)(para elementos de formulario y body).
+        Relacionado con el teclado      onkeyup             El usuario libera una tecla que tenia pulsada(para elementos de formulario y body).
+        
+        Relacionado con mov. en ventana scroll
+       
+        EVENTOS SOBRE CARGA Y DESCARGA DE ELEMENTOS
+                                        Load                Se concluyo la carga del elemento .
+                                        DOMContentLoaded    Se produce cuando el documento html ha sido cargado.A diferencia de load , se dispara sin esperar a que 
+                                                            las hojas de estilo y elementos en segundo plano terminen de cargar. 
+                                        Abort               Se produce cuando se anula la carga de un elemento.
+                                        Error               Sucede si hubo un error en la carga.
+                                        Progress            Se produce si la carga está en proceso.
+                                        Readystatechamge    Ocurre cuando se ha modificado e estado del atributo readystate, lo cual ocurre cuando se ha modificado
+                                                            el estado de carga o descarga.
+
+                                                             OTROS EVENTOS
+
+        Eventos sobre el historial: popstate
+        Eventos relacionados con la reproduccion de medios:         waiting, playing, canplay,canplaythough, pause, play, ended, ladeddata, uspend, empited,stalled,seeking,seeked,
+                                                                    loadmetadata,durationchange, timeupdate, ratechange, volumechnge.
+        Eventos de arrastre:                                        dragstar,drag,dragstop,dragcenter,dragover,dragleave,drop.
+        Eventos de animaciones y transiciones:                      animationstart, animationinteraction,animationended, transitionrun,transitionend
+        Eventos del portapapeles:                                   offline, online, fullscreenchange, fullscreenerror,message.
+
+        */
+
+        
+    </script>
+    <a href="https://www.w3schools.com/js/js_events.asp">Info de otros tipos de eventos</a>
+</body>
+</html>

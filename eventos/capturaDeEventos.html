@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes eventos 1</title>
+</head>
+
+<body>
+    <div>
+        <p id="parrafo1">Soy 'clickable'</p>
+        <p id="parrafo2">Yo no</p>
+        <p id="parrafo3">
+            <button id="boton1">Hazme click!</button>
+        </p>
+        <p id="parrafo4">Parafo 04</p>
+    </div>
+    <script>
+        /*El METODO QUE SE ACONSEJA ACTUALMENTE y se debe utilizar según la norma actual 
+        es el método addEventListener. A este método hay que indicarle el nombre del evento 
+        y la función callback a ejecutar. Además, tiene una ventaja técnica sobre los dos 
+        métodos anteriores: se puede asignar más de una función al mismo tiempo.
+        
+        Para asignar varias acciones, basta con invocar otra vez a la función addEventListener 
+        con el mismo tipo de evento y usando otra función callback. Cuando se produzca el evento,
+         el código de todas las funciones que se han asociado al evento, se ejecutará.*/
+
+        let parrafo1 = document.getElementById("parrafo1");
+        parrafo1.addEventListener("click", () => { alert('Me has hecho click') });
+
+        /*PROPAGACION DE EVENTOS
+        Una cuestión fundamental en la captura de eventos es cómo se propagan los eventos 
+        sobre los contenedores de los elementos.
+        Por defecto , el evento se propaga en FASE DE BURBUJA, esto es,desde el botón (elemento más interior)
+         hasta el elemento más exterior, más cercano a la raíz del DOM. a la inversa se denomina FASE DE CAPTURA*/
+
+        let capa = document.querySelector("div");
+        let p = document.querySelector("#parrafo3");
+        let boton = document.querySelector("button");
+
+        capa.addEventListener("click", () => (console.log("click en capa")));
+        p.addEventListener("click", () => (console.log("click en parrafo 3")));
+        boton.addEventListener("click", () => (console.log("click en boton")));
+
+        /* Podemos modificar este comportamiento, si indicamos que el lanzamiento sea en la fase de captura.
+          Se consigue este efecto (no disponible en versiones de Internet Explorer anteriores a la 9), gracias a que,
+           en realidad, el método addEventListener tiene un tercer parámetro relacionado con el tipo de captura. Se trata 
+           de un valor booleano que tiene estas posibilidades:
+
+               true: el código de captura se lanza en la fase de captura.
+               false: Es el valor por defecto. El código se lanza en la fase de burbuja.
+       */
+        capa.addEventListener("click", () => (console.log("click en capa")), true);
+        p.addEventListener("click", () => (console.log("click en parrafo 3")), true);
+        boton.addEventListener("click", () => (console.log("click en boton")), true);
+
+        /*REMOVE EVENT LISTENER 
+        Imaginemos que deseamos que cuando hagamos clic a un elemento concreto se nos muestre un mensaje,
+        pero queremos que ese mensaje aparezca una sola vez. Por defecto, el evento se captura indefinidamente,
+        pero existe un método contrario a addEventListener que tiene los mismos parámetros. Se trata de removeEventListener.*/
+        let x=document.querySelector("#parrafo4");
+        function mensaje() {
+            alert("Me has hecho click,mamón");
+            x.removeEventListener("click", mensaje);
+        }
+         x = document.querySelector("#parrafo4");
+        x.addEventListener("click", mensaje);        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimir 500 numeros pares</title>
+</head>
+
+<body>
+    <div id="resultado">
+        <script>
+          // Función para determinar si un número es par o impar
+    function determinarParidad(numero) {
+      if (numero % 2 === 0) {
+        return "par";
+      } else {
+        return "impar";
+      }
+    }
+
+    // Generar y mostrar los 500 números aleatorios
+    var resultadoDiv = document.getElementById("resultado");
+
+    for (var i = 0; i < 500; i++) {
+      var numero = Math.floor(Math.random() * 10000) + 1;
+      var paridad = determinarParidad(numero);
+
+      var parrafo = document.createElement("p");
+      var texto = document.createTextNode(numero + "  " + paridad);
+      parrafo.appendChild(texto);
+
+      resultadoDiv.appendChild(parrafo);
+    }
+        </script>
+    </div>
+    
+</body>
+
+</html>

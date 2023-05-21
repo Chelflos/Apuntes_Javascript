@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*CARACTERISTICAS 
+        Guarda info de las URLs visitadas por el usuario dentro de una ventana
+        del navegador*/
+        //length: Devuelve el numero de URL's en el historial de la pagina
+        alert("URLs del historial: "+history.length)
+
+        //METODOS
+        //back:carga la url anterior en el historial
+        function atras(){
+            history.back();
+        //foward:carga la url siguiente en el historial
+        function adelante(){
+            history.forward();
+        //go(<numero|url>)va a una pagina concreta del historial, si introduces un numero positivo va ese numero de posiciones hacia delante
+        //y si es negativo, hacia atras.En caso de introducior una url, va directamente a esta
+        function ir(){
+            var numero = prompt("Indica un numero para moverte en el historial: ");
+            history.go(numero);
+        }
+        }
+        }
+    </script>
+</body>
+</html>

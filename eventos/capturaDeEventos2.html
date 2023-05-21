@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+    <p>Uno</p>
+    <p>Dos</p>
+    <p>Tres</p>
+    <p>Cuatro</p>
+    <script>
+        /*La página posee cuatro párrafos, con los textos Uno, Dos, Tres y Cuatro. El código JavaScript asocia 
+        todos los párrafos a la variable que se llama párrafos. Pero, para implementar el control de eventos, 
+        necesitamos asignar un evento a cada párrafo. Por eso hay un bucle que recorre cada elemento devuelto 
+        por el método querySelectorAll y así vamos asignando a cada párrafo la captura del evento. Si ejecutamos 
+        este código, veremos que al hacer clic en cualquiera de los cuatro párrafos, se nos muestra el mensaje.*/
+        let parrafos=document.querySelectorAll("p");
+        for(let parrafo of parrafos){
+            parrafo.addEventListener("click",()=>(alert(parrafo.textContent)));
+        }
+        /*Sin embargo, si añadimos un quinto párrafo de tipo p mediante JavaScript:*/
+        let nuevoParrafo=document.createElement("p");
+        nuevoParrafo.textContent="Cinco";
+        document.body.appendChild(nuevoParrafo);
+        /*Este párrafo aparecerá al final de los otros cuatro. Al hacer clic en él, no ocurrirá nada. La razón es lógica.
+         Se ha creado después del bucle y por ello no se ha ejecutado el método addEventListener sobre él. 
+         Tendríamos que añadir el código que permita capturar el evento en el nuevo elemento*/
+         
+    </script>
+</body>
+</html>
